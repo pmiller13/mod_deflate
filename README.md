@@ -4,6 +4,7 @@ Test Apache Performance of Caching + Compression
 1. Install Docker
 2. Run 'docker pull httpd:2.4'
 3. Run 'docker run  -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4' from the directory containing your HTML pages
+  * Note that the directory containing your HTML needs 'chmod 775 ./html_dir'
 4. Apache is now running in a docker container (kind of like a virtual machine)
 * When you run a docker container, it gets assigned two unique identifiers, one is alphanumeric, the other is the bicomposition of two words
 * Find these IDs by running 'docker ps' (maybe in another terminal)
