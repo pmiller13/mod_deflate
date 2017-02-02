@@ -3,10 +3,10 @@ Test Apache Performance of Caching + Compression
 # Setup
 1. Install Docker
 2. Run 'docker pull httpd:2.4'
-3. Run 'docker run -dit -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4' from the directory containing your HTML pages
+3. Run 'docker run  -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4' from the directory containing your HTML pages
 4. Apache is now running in a docker container (kind of like a virtual machine)
 * When you run a docker container, it gets assigned two unique identifiers, one is alphanumeric, the other is the bicomposition of two words
-* Find these IDs by running 'docker ps'
+* Find these IDs by running 'docker ps' (maybe in another terminal)
 5. To access your webpages, you need the IP address of your docker container running Apache
 6. To get IP address run 'docker inspect name_or_id_of_your_container' and navigate to that IP
 7. VOILA, this is stock configured Apache server
