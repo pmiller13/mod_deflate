@@ -1,3 +1,9 @@
+Make everything public and provide resources
+Divide test cases into archetypes
+- throw a shit ton of relevant stuff into each archetype
+
+apache2ctl restart
+docker run -it -v "$PWD":/usr/local/apache2/htdocs/ -p 80:80 httpd:latest
 # mod_deflate
 Test Apache Performance of Caching + Compression
 # Setup
