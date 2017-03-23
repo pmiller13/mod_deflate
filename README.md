@@ -20,6 +20,7 @@ Test Apache Performance Gains With Compression using three common website templa
 
 ## Apache Compression w/ mod_deflate
 [Reference Report](http://www.webperformance.com/library/reports/moddeflate/)
+
 [mod_flate Documentation](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
 
 ### Compression Considerations
