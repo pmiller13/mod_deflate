@@ -1,14 +1,13 @@
 Make everything public and provide resources
-Divide test cases into archetypes
-- throw a shit ton of relevant stuff into each archetype
 
-apache2ctl restart
-docker run -it -v "$PWD":/usr/local/apache2/htdocs/ -p 80:80 httpd:latest
+Useful commands:
+* /usr/local/apache2/bin/apache2ctl restart
+* docker run -it -v "$PWD":/usr/local/apache2/htdocs/ -p 80:80 httpd:latest
 # mod_deflate
-Test Apache Performance of Caching + Compression
+Test Apache Performance Gains With Compression using three common website templates.
 # Setup
 1. Install Docker
-2. Run 'docker pull httpd:2.4'
+2. Download Apache container with 'docker pull httpd:2.4'
 3. Run 'docker run  -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4' from the directory containing your HTML pages
   * Note that the directory containing your HTML needs 'chmod 775 ./html_dir'
 4. Apache is now running in a docker container (kind of like a virtual machine)
@@ -20,27 +19,20 @@ Test Apache Performance of Caching + Compression
 
 
 ## Apache Compression w/ mod_deflate
-[Past Report](http://www.webperformance.com/library/reports/moddeflate/)
+[Reference Report](http://www.webperformance.com/library/reports/moddeflate/)
 [mod_flate Documentation](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
 
 ### Compression Considerations
-* By default, mod_deflate compresses before serving. For improved performance we can compress stuff prior
+* By default, mod_deflate compresses before serving. For improved performance we can compress stuff prior. However, we did not have time to test this.
 
 ## Apache Caching
 [Cache Documentation](https://httpd.apache.org/docs/2.4/caching.html)
 
 ## Project
-1. Given 3 website designs: purely images, purely text, mixture
+1. Given 3 website designs:
     * Need 3 different dummy website designs
     * Need 3 different Apache configuration files with options described below
 2. Record page load times using default Apache configs
 3. Record page load times with mod_deflate enabled
-4. Record page loda times with mod_deflate enabled + pre-compressed
-5. Record page load times with mod_deflate disabled
-6. Mechanism to automate page load times
-* Idea for automating this process:
-  * Start a timer at the top of index.html
-  * End the timer at the bottom of index.html
-  * Embed this value somewhere on the page
-  * Have a script that loads a page or set of pages many many times
-  * Script will parse webpages for this timer value, eg: x = parse(webpage, "timer_val=XX.XX")
+4. Record page load times with mod_deflate disabled
+5. Mechanism to automate page load times
