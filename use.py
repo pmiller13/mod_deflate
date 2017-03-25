@@ -1,29 +1,43 @@
 import requests
 import sys
 
-def automate(site,num):
+sites = ['gallery','opportunity','business-time']
+iterations = 0
+num = 0
+ip = ''
+
+def avg(list): return sum(list)/len(list)
+
+def automate():
     tot = 0
     times = []
+    total_bandwidth = 0
     max_time = 0
-    for i in range(num):
-
-        response = requests.get(site)
-        tot = tot + response.elapsed.total_seconds()
-        times.append(response.elapsed.total_seconds())
-
-        if max_time < response.elapsed.total_seconds():
-            max_time = response.elapsed.total_seconds()
-
-    avg = tot/num
-    print("Avg time: " + str(avg) + " sec")
-    print("Max time: " + str(max_time) + " sec")
-
-if __name__ == '__main__':
-    if len(sys.argv) >= 3:
-        ip = sys.argv[1]
-        num = int(sys.argv[2])
-        site = sys.argv[3]
+    #if len(ip) == 0:
+    #    ip = '0.0.0.0'
+    for site in sites:
+        # Number of trials to run per site
         site = 'http://' + ip + '/' + site + '/'
-        automate(site,num)
-    else:
-        print("Usage: python use.py xxx.xxx.xxx.xxx number_of_requests site_path")
+        for i in range(iterations):
+            # Number of requests to send
+            for j in range(num):
+                response = requests.get(site)
+                times.append(response.elapsed.total_seconds())
+                total_bandwidth = total_bandwidth + (len(response.content)/10000000.0)
+        times.sort()
+
+        print(str(iterations) + " trials  of " + str(num) + " complete for " + site + ":")
+        print("Min: " + str(times[0]) + " sec")
+        print("Max: " + str(times[len(times)-1]) + " sec")
+        print("Avg: " + str(avg(times)) + " sec")
+        foo = iterations + 0.0
+        print("Bandwidth: " + str(total_bandwidth/foo))
+        print('\n')
+
+
+
+iterations = input("How many times would you like to test each site? ")
+num = input("How many requests per site? ")
+ip = raw_input("Enter site ip: ")
+print('\n')
+automate()
