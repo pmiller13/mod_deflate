@@ -1,0 +1,23 @@
+How many times would you like to test each site? How many requests per site? Enter site ip: 
+
+3 trials  of 1000 complete for http://172.17.0.2/gallery/:
+Min: 0.000857 sec
+Max: 0.00417 sec
+Avg: 0.00112982066667 sec
+Bandwidth: 1.7018
+
+
+3 trials  of 1000 complete for http://172.17.0.2/opportunity/:
+Min: 0.000841 sec
+Max: 0.006615 sec
+Avg: 0.00113701783333 sec
+Bandwidth: 2.7905
+
+
+3 trials  of 1000 complete for http://172.17.0.2/business-time/:
+Min: 0.000811 sec
+Max: 0.006615 sec
+Avg: 0.001100686 sec
+Bandwidth: 3.4731
+
+
